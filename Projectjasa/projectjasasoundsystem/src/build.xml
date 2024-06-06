@@ -1,0 +1,26 @@
+<project name="projectjasasoundsystem" default="run" basedir=".">
+    <description>Build and run projectjasasoundsystem</description>
+    
+    <target name="init">
+        <mkdir dir="build"/>
+        <mkdir dir="dist"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="src" destdir="build" includeantruntime="false">
+            <classpath>
+                <pathelement path="lib/mysql-connector-java-8.4.0.jar"/> <!-- Path to MySQL connector -->
+            </classpath>
+        </javac>
+    </target>
+
+    <target name="run" depends="compile">
+        <java classname="projectjasasoundsystem.Main" fork="true">
+            <classpath>
+                <pathelement path="build"/>
+                <pathelement path="lib/mysql-connector-java-8.4.0.jar"/>
+            </classpath>
+        </java>
+    </target>
+</project>
+
